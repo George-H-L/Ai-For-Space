@@ -9,16 +9,17 @@ Group research project applying Convolutional Neural Network (CNN) architectures
 - **George & Tausif**: Evaluation & Report (metrics, plots, comparison, results & discussion)
 
 ## Repository Structure
-├── notebooks/
-│   ├── preprocessing.ipynb       # Data loading, cleaning, splits
-│   ├── resnet18_training.ipynb   # ResNet18 baseline
-│   ├── resnet50_training.ipynb   # ResNet50 main model
-│   └── evaluation.ipynb          # Metrics, comparison, visualisations
-├── src/                          # Shared utility code
-├── data/                         # Dataset location (not tracked in Git)
-├── results/                      # Model outputs, plots, metrics
-├── requirements.txt              # Pinned dependencies (TBC by Ehsan)
-└── README.md
+
+- **`notebooks/`**
+  - `preprocessing.ipynb`: Data loading, cleaning, splits
+  - `resnet18_training.ipynb`: ResNet18 baseline
+  - `resnet50_training.ipynb`: ResNet50 main model
+  - `evaluation.ipynb`: Metrics, comparison, visualisations
+- **`src/`**: Shared utility code
+- **`data/`**: Dataset location (not tracked in Git)
+- **`results/`**: Model outputs, plots, metrics
+- **`requirements.txt`**: Pinned dependencies (TBC by Ehsan)
+- **`README.md`**
 
 ## Dataset
 **SAT-6**: 6-class land cover classification dataset derived from the National Agriculture Imagery Program (NAIP). Contains ~405,000 image patches (28×28 pixels, 4 spectral bands).
@@ -36,7 +37,7 @@ Preprocessing is run in Google Colab to keep the data pipeline consistent across
 
 Mount the shared Google Drive folder to access the raw dataset. Processed train/val/test splits are saved back to the shared Drive folder so the rest of the team can pull from a single source of truth.
 
-** Google Drive Link **
+**Google Drive Link**
 https://drive.google.com/drive/folders/1zAzklidTDHZN1X5x6CIwO0e7dgrOUX58?usp=sharing
 
 ### Training & Evaluation (Colab or local Jupyter)
