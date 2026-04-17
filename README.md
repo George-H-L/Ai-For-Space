@@ -1,6 +1,6 @@
-# CNN Models for Remote Sensing: SAT-6 Classification
+# CNN Models for Remote Sensing: EuroSAT Classification
 
-Group research project applying Convolutional Neural Network (CNN) architectures to the SAT-6 satellite imagery dataset for land cover classification.
+Group research project applying Convolutional Neural Network (CNN) architectures to the EuroSAT satellite imagery dataset for land cover classification.
 
 ## Team
 - **Ehsan**: Data & Preprocessing (dataset, class mapping, preprocessing, dataloaders)
@@ -9,7 +9,6 @@ Group research project applying Convolutional Neural Network (CNN) architectures
 - **George & Tausif**: Evaluation & Report (metrics, plots, comparison, results & discussion)
 
 ## Repository Structure
-
 - **`notebooks/`**
   - `preprocessing.ipynb`: Data loading, cleaning, splits
   - `resnet18_training.ipynb`: ResNet18 baseline
@@ -22,11 +21,11 @@ Group research project applying Convolutional Neural Network (CNN) architectures
 - **`README.md`**
 
 ## Dataset
-**SAT-6**: 6-class land cover classification dataset derived from the National Agriculture Imagery Program (NAIP). Contains ~405,000 image patches (28×28 pixels, 4 spectral bands).
+**EuroSAT**: 10-class land cover classification dataset based on Sentinel-2 satellite imagery. Contains 27,000 labelled image patches (64×64 pixels, 13 spectral bands).
 
-Classes: building, barren land, trees, grassland, road, water.
+Classes: annual crop, forest, herbaceous vegetation, highway, industrial, pasture, permanent crop, residential, river, sea/lake.
 
-Download from [Kaggle](https://www.kaggle.com/datasets/crawford/deepsat-sat6) and place in the `data/` folder, or use the shared Google Drive folder.
+Download from [Kaggle](https://www.kaggle.com/datasets/apollo2506/eurosat-dataset) and place in the `data/` folder, or use the shared Google Drive folder.
 
 ## Workflow
 
