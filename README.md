@@ -11,8 +11,8 @@ Group research project applying Convolutional Neural Network (CNN) architectures
 ## Repository Structure
 - **`notebooks/`**
   - `preprocessing.ipynb`: Data loading, cleaning, splits
-  - `resnet18_training.ipynb`: ResNet18 baseline
-  - `resnet50_training.ipynb`: ResNet50 main model
+  - `BaselineModel.ipynb`: ResNet18 baseline
+  - `resnet50_Model.ipynb`: ResNet50 main model
   - `evaluation.ipynb`: Metrics, comparison, visualisations
 - **`src/`**: Shared utility code
 - **`data/`**: Dataset location (not tracked in Git)
