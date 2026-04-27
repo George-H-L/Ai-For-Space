@@ -1,68 +1,38 @@
-# CNN Models for Remote Sensing: EuroSAT Classification
+# Satellite Land-Cover Classification (EuroSAT)
 
-Group research project applying Convolutional Neural Network (CNN) architectures to the EuroSAT satellite imagery dataset for land cover classification.
+This project is a deep learning pipeline for classifying satellite imagery using the EuroSAT dataset. We wanted to see if building a massive model actually helps with small 64x64 images, or if data augmentation is the real secret to high accuracy.
 
-## Team
-- **Ehsan**: Data & Preprocessing (dataset, class mapping, preprocessing, dataloaders)
-- **Oliver**: Model 1: ResNet18 (baseline training, validation, checkpoints)
-- **Luca**: Model 2: ResNet50 (main model, tuning, scheduler)
-- **George & Tausif**: Evaluation & Report (metrics, plots, comparison, results & discussion)
+## What is in here?
+The project is split into two main folders:
 
-## Repository Structure
-- **`notebooks/`**
-  - `preprocessing.ipynb`: Data loading, cleaning, splits
-  - `BaselineModel.ipynb`: ResNet18 baseline
-  - `resnet50_Model.ipynb`: ResNet50 main model
-  - `evaluation.ipynb`: Metrics, comparison, visualisations
-- **`src/`**: Shared utility code
-- **`data/`**: Dataset location (not tracked in Git)
-- **`results/`**: Model outputs, plots, metrics
-- **`requirements.txt`**: Pinned dependencies (TBC by Ehsan)
-- **`README.md`**
+* **/data**: Preprocessing scripts to get the EuroSAT images ready.
+* **/notebooks**: This is where the actual work happens.
+    * `BaselineModel.ipynb`: Our custom ResNet18 (the lightweight version).
+    * `resnet50_model.ipynb`: The standard ResNet50.
+    * `resnet50_model_augmented.ipynb`: The ResNet50 trained with our rotation/color jittering pipeline.
+    * `evaluation.ipynb`: **Run this one** to see the final comparison and graphs.
+    * `*.pth` files: The saved weights so you don't have to wait hours for the models to train.
 
-## Dataset
-**EuroSAT**: 10-class land cover classification dataset based on Sentinel-2 satellite imagery. Contains 27,000 labelled image patches (64×64 pixels, 13 spectral bands).
+## How to run it
+We set this up so the marker can just click run and see the results immediately.
 
-Classes: annual crop, forest, herbaceous vegetation, highway, industrial, pasture, permanent crop, residential, river, sea/lake.
+1. **Check your libraries**: You'll need `torch`, `torchvision`, `matplotlib`, `seaborn`, and `sklearn` installed in your environment.
+2. **Run the Preprocessing**: If the data isn't ready, run the scripts in `/data` first.
+3. **Run the Evaluation**: Open `notebooks/evaluation.ipynb` and click **"Run All"**. 
 
-Download from [Kaggle](https://www.kaggle.com/datasets/apollo2506/eurosat-dataset) and place in the `data/` folder, or use the shared Google Drive folder.
+The notebook uses relative paths, so as long as you keep the folders together, everything will load automatically.
 
-## Workflow
+## The Results
+We managed to hit a peak accuracy of **97.88%** with the Augmented ResNet50. 
 
-### Preprocessing (Google Colab)
-Preprocessing is run in Google Colab to keep the data pipeline consistent across the team. Ehsan owns this stage. Open the preprocessing notebook directly in Colab:
+| Model | Setup | Accuracy |
+| :--- | :--- | :--- |
+| **ResNet18** | Standard | **96.84%** |
+| **ResNet50** | Standard | **96.89%** |
+| **ResNet50** | **Augmented** | **97.88%** |
 
-- [Preprocessing notebook](https://colab.research.google.com/github/George-H-L/Ai-For-Space/blob/main/notebooks/preprocessing.ipynb)
+### Key Takeaway
+Upgrading from ResNet18 to ResNet50 only gave us a tiny 0.05% boost at first. It turns out the deeper model was just "data-starved." Once we added the augmentation pipeline, the accuracy jumped significantly.
 
-Mount the shared Google Drive folder to access the raw dataset. Processed train/val/test splits are saved back to the shared Drive folder so the rest of the team can pull from a single source of truth.
-
-**Google Drive Link**
-https://drive.google.com/drive/folders/1zAzklidTDHZN1X5x6CIwO0e7dgrOUX58?usp=sharing
-
-### Training & Evaluation (Colab or local Jupyter)
-Once preprocessing is complete, training and evaluation can be run either in Colab or in local Jupyter, depending on each member's preference and hardware.
-
-**Open in Colab:**
-- [ResNet18 Training](https://colab.research.google.com/github/George-H-L/Ai-For-Space/blob/main/notebooks/resnet18_training.ipynb)
-- [ResNet50 Training](https://colab.research.google.com/github/George-H-L/Ai-For-Space/blob/main/notebooks/resnet50_training.ipynb)
-- [Evaluation](https://colab.research.google.com/github/George-H-L/Ai-For-Space/blob/main/notebooks/evaluation.ipynb)
-
-**Run locally in Jupyter:**
-1. Clone the repo: `git clone https://github.com/George-H-L/Ai-For-Space.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Download the preprocessed splits from the shared Drive folder into `data/`
-4. Open notebooks: `jupyter notebook`
-
-Note: `requirements.txt` will be populated by Ehsan once preprocessing dependencies are finalised. To keep results comparable across machines, anyone running locally should match the package versions specified there.
-
-## Methodology
-1. **Preprocessing**: Data loading, normalisation, augmentation, train/val/test split *(details TBC by Ehsan)*
-2. **Models**:
-   - ResNet18: baseline architecture *(training details TBC by Oliver)*
-   - ResNet50: main model with tuning and learning rate scheduling *(details TBC by Luca)*
-3. **Evaluation**: Comparative analysis across models *(metrics TBC by George & Tausif)*
-
-## Reproducibility
-- Fixed random seed across all notebooks *(seed value TBC by Ehsan)*
-- Pinned package versions in `requirements.txt` *(TBC by Ehsan)*
-- Preprocessed data splits saved to shared Drive folder
+## The Team
+Ehsan, Oliver, Luca, George, Tausifraza
