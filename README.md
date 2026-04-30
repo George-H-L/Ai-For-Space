@@ -1,6 +1,11 @@
 # Satellite Land-Cover Classification (EuroSAT)
 
 This project is a deep learning pipeline for classifying satellite imagery using the EuroSAT dataset. We wanted to see if building a massive model actually helps with small 64x64 images, or if data augmentation is the real secret to high accuracy.
+Confusion Matrices
+<img width="2426" height="716" alt="Screenshot 2026-04-27 015716" src="https://github.com/user-attachments/assets/a0fec08d-b3c8-40c5-a70a-5c407cba7375" />
+Results
+<img width="849" height="1112" alt="Screenshot 2026-04-27 020044" src="https://github.com/user-attachments/assets/b04938d1-5868-4e2e-b278-77100ffe0e38" />
+
 
 ## What is in here?
 The project is split into two main folders:
